@@ -1,3 +1,3 @@
 # Utilities
 
-I intend to update this repo with my most used solutions to daily problems.
+I intend to update this repo with the solutions I use on my daily problems.

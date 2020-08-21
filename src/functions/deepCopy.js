@@ -1,29 +1,16 @@
-var userDetails = {
-  name: "Mayank",
-  age: 30,
-  designation: "Developer",
-  address: {
-    street: "Rohini",
-    country: "India",
-  },
-  showDetails: function () {
-    console.log("UserName: " + this.name);
-  },
-};
+const deepCopyFunction = (inObject) => {
+  let outObject, value, key;
 
-function getDeepCopy(baseObject, destinationObject) {
-  for (key in baseObject) {
-    if (typeof baseObject[key] !== "object") {
-      destinationObject[key] = baseObject[key];
-    } else {
-      destinationObject[key] = {};
-      deepCopy(baseObject[key], destinationObject[key]);
-    }
+  if (typeof inObject !== "object" || inObject === null) {
+    return inObject;
   }
-}
 
-const newObj = {};
+  outObject = Array.isArray(inObject) ? [] : {};
 
-getDeepCopy(userDetails, newObj);
+  for (key in inObject) {
+    value = inObject[key];
+    outObject[key] = deepCopyFunction(value);
+  }
 
-console.log(newObj);
+  return outObject;
+};
